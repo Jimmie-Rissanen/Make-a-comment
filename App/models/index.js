@@ -1,3 +1,5 @@
+// Initializeing sequelize and configuring DB
+
 const Sequelize = require("sequelize");
 const sequelize = new Sequelize(
   process.env.DB,
@@ -6,11 +8,10 @@ const sequelize = new Sequelize(
   {
     host: process.env.DB_HOST,
     dialect: "postgres",
-    operatorsAliases: false,
   }
 );
 const db = {};
 db.Sequelize = Sequelize;
 db.sequelize = sequelize;
-db.comments = require("./comment.model.js");
+db.comments = require("./comment.model.js")(sequelize, Sequelize);
 module.exports = db;
