@@ -41,11 +41,37 @@ exports.findAll = (req, res) => {
 // Update a comment
 exports.update = (req, res) => {
   const id = req.params.id;
-  Comment.update(req.body, { where: { id: id } });
+  Comment.update(req.body, { where: { id: id } })
+    .then((statusNumber) => {
+      if (statusNumber == 1) {
+        res.status(200).send({ message: "Comment was updated" });
+      } else {
+        res.send({ message: "The comment was not found." });
+      }
+    })
+    .catch((err) => res.status(500).send(err.message));
 };
 
-// Delete one commet by id
-exports.delete = (req, res) => {};
+// Delete comment and children
+exports.delete = async (req, res) => {
+  try {
+    const id = await req.params.id;
+    const children = await Comment.findAll({ where: { parent: id } });
+    const childId = children.map((el) => el.id);
 
-// Delete all children from a deleted parent
-exports.deleteAll = (req, res) => {};
+    await Comment.destroy({
+      where: {
+        [Op.and]: {
+          id: childId,
+        },
+      },
+    });
+    await Comment.destroy({ where: { id: id } });
+    res.status(200).send({
+      ["Deleted comment"]: id,
+      ["Deleted children"]: childId,
+    });
+  } catch (error) {
+    throw error;
+  }
+};

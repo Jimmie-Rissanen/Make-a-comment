@@ -25,11 +25,10 @@ db.sequelize
 
 //Routes
 
-app.post("/", controllers.create);
+app.post("/create", controllers.create);
 app.get("/", controllers.findAll);
-app.put("/:id", controllers.update);
-app.delete("/:id", controllers.delete);
-app.delete("/parent:id/", controllers.deleteAll);
+app.put("/update/:id", controllers.update);
+app.delete("/delete/:id", controllers.delete);
 
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);

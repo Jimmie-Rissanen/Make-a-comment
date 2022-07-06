@@ -10,11 +10,6 @@ module.exports = (sequelize, Sequelize) => {
       type: Sequelize.INTEGER,
       allowNull: false,
     },
-    hasParent: {
-      type: Sequelize.BOOLEAN,
-      defaultValue: true,
-      allowNull: false,
-    },
   });
   return Comment;
 };
