@@ -2,6 +2,10 @@
 
 module.exports = (sequelize, Sequelize) => {
   const Comment = sequelize.define("comment", {
+    name: {
+      type: Sequelize.TEXT,
+      allowNull: false,
+    },
     content: {
       type: Sequelize.TEXT,
       allowNull: false,
