@@ -11,9 +11,9 @@ exports.create = (req, res) => {
   }
   // Create the comment
   const comment = {
+    name: req.body.name,
     content: req.body.content,
     parent: req.body.parent,
-    hasParent: req.body.hasParent,
   };
   // Save to db
   Comment.create(comment)
