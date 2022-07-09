@@ -4,7 +4,7 @@ import { Form, Button, FloatingLabel, Card } from "react-bootstrap";
 function Comment({ height }) {
   return (
     <Card body>
-      <Form>
+      <Form className="fs-4">
         <FloatingLabel label="Name">
           <Form.Control type="input" className="mb-3" />
         </FloatingLabel>
