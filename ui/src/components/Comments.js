@@ -23,7 +23,8 @@ function Comments() {
     {
       id: 3,
       name: "Korven",
-      content: "Lorén hicksum dollar sallat",
+      content:
+        "Lorén hicksum dollar sallat Lorén hicksum dollar sallat Lorén hicksum dollar sallat Lorén hicksum dollar sallat Lorén hicksum dollar sallat Lorén hicksum dollar sallat Lorén hicksum dollar sallatLorén hicksum dollar sallatLorén hicksum dollar sallatLorén hicksum dollar sallatLorén hicksum dollar sallatLorén hicksum dollar sallat",
       parent: 2,
       createdAt: "2022-07-09T20:31:32.538Z",
       updatedAt: "2022-07-09T20:31:32.538Z",
@@ -32,7 +33,7 @@ function Comments() {
       id: 4,
       name: "Snickers",
       content: "MHM",
-      parent: 2,
+      parent: 1,
       createdAt: "2022-07-09T20:31:51.243Z",
       updatedAt: "2022-07-09T20:31:51.243Z",
     },
@@ -62,8 +63,17 @@ function Comments() {
   return (
     <div className="container">
       <h1>Make a comment!</h1>
-      <Form />
-      <div className="comment-container">{rootComments.map}</div>
+      <div className="comment-container">
+        {rootComments.map((rootComment) => (
+          <Comment
+            key={rootComment.id}
+            comment={rootComment}
+            name={rootComment.name}
+            content={rootComment.content}
+            replies={getReplies(rootComment.id)}
+          />
+        ))}
+      </div>
     </div>
   );
 }

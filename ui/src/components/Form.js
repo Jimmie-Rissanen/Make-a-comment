@@ -1,9 +1,7 @@
 import React from "react";
 
 function Form({ name, content, replies }) {
-  return(
-    
-  );
+  return;
 }
 
 export default Form;

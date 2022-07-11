@@ -1,0 +1,27 @@
+.container {
+  max-width: 800px;
+  margin-top: 40px;
+}
+
+.comment-container {
+  padding: 10px;
+}
+
+.comment {
+  padding: 10px;
+}
+
+.replies {
+  padding-left: 100px;
+}
+
+.profile-picture {
+  border-radius: 50px;
+  padding: 10px;
+  display: block;
+}
+
+.content {
+  display: flex;
+  align-items: center;
+}
