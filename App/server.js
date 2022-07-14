@@ -6,13 +6,10 @@ const controllers = require("./controllers/comment.controller");
 
 const PORT = process.env.PORT || 5000;
 const app = express();
-const corsOptions = {
-  origin: "http://localhost:6000",
-};
 
 //Middleware
 
-app.use(cors(corsOptions));
+app.use(cors());
 app.use(express.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 

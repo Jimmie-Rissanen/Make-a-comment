@@ -53,25 +53,25 @@ exports.update = (req, res) => {
 };
 
 // Delete comment and children
-exports.delete = async (req, res) => {
-  try {
-    const id = await req.params.id;
-    const children = await Comment.findAll({ where: { parent: id } });
-    const childId = children.map((el) => el.id);
-
-    await Comment.destroy({
-      where: {
-        [Op.and]: {
-          id: childId,
-        },
-      },
+exports.delete = (req, res) => {
+  const id = req.params.id;
+  Comment.destroy({
+    where: { id: id },
+  })
+    .then((num) => {
+      if (num == 1) {
+        res.send({
+          message: "Comment was deleted successfully!",
+        });
+      } else {
+        res.send({
+          message: `Cannot delete the comment with id=${id}.`,
+        });
+      }
+    })
+    .catch((err) => {
+      res.status(500).send({
+        message: "Could not delete the comment with id=" + id,
+      });
     });
-    await Comment.destroy({ where: { id: id } });
-    res.status(200).send({
-      ["Deleted comment"]: id,
-      ["Deleted children"]: childId,
-    });
-  } catch (error) {
-    throw error;
-  }
 };
