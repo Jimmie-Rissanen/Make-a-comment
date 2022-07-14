@@ -1,9 +1,8 @@
-import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Comments from "./components/Comments";
 import "bootstrap/dist/css/bootstrap.min.css";
 
-function App() {
+const App = () => {
   return (
     <Router>
       <Routes>
@@ -11,6 +10,6 @@ function App() {
       </Routes>
     </Router>
   );
-}
+};
 
 export default App;

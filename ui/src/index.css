@@ -3,6 +3,9 @@
   margin-top: 40px;
 }
 
+h1 {
+  text-align: center;
+}
 .comment-container {
   padding: 10px;
 }
@@ -24,4 +27,11 @@
 .content {
   display: flex;
   align-items: center;
+}
+
+form,
+input,
+textarea,
+button {
+  margin: 10px 0 10px 0;
 }
