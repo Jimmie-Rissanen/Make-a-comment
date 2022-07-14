@@ -13,7 +13,7 @@ const getComments = async () => {
 const addComment = async (id, name, content, parent = 0) => {
   try {
     const comment = { name: name, content: content, parent };
-    const res = await fetch(BASEURL + "create", {
+    await fetch(BASEURL + "create", {
       method: "post",
       headers: {
         "Content-Type": "application/json",
@@ -29,7 +29,7 @@ const addComment = async (id, name, content, parent = 0) => {
 const updateComment = async (id, name, content) => {
   try {
     const comment = { id: id, name: name, content: content };
-    const res = await fetch(`${BASEURL}update/${id}`, {
+    await fetch(`${BASEURL}update/${id}`, {
       method: "put",
       headers: {
         "Content-Type": "application/json",
@@ -44,7 +44,7 @@ const updateComment = async (id, name, content) => {
 
 const deleteComment = async (id) => {
   try {
-    const res = await fetch(`${BASEURL}delete/${id}`, {
+    await fetch(`${BASEURL}delete/${id}`, {
       method: "delete",
       headers: {
         "Content-Type": "application/json",

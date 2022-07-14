@@ -18,7 +18,11 @@ function Comment({ comment, name, content, replies }) {
 
       <div className="content">
         <div>
-          <img src="https://picsum.photos/80" className="profile-picture"></img>
+          <img
+            src="https://picsum.photos/80"
+            className="profile-picture"
+            alt={`profile ${comment.id}`}
+          ></img>
         </div>
         {update ? (
           <Form id={comment.id} handleSubmit={updateComment} />
